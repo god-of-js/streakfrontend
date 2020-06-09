@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import auth from './auth.js'
+import admin from './admin.js'
 
 Vue.use(VueRouter);
 
@@ -24,7 +25,8 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
-  ...auth
+  ...auth,
+  ...admin
 ];
 
 const router = new VueRouter({

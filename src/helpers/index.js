@@ -8,28 +8,36 @@ const successNot = (msg, vueApp) =>{
                 let position = {
             position: "topRight"
           }
-                vueApp.$toast.success(msg, 'Success', position)
+         vueApp.$toast.success(msg, 'Success', position)
 }
 
+const videoCheck = file => {
+  if (!file.type.startsWith('video')) {
+    return false;
+  } else {
+    return true;
+  }
+};
 const imgCheck = file => {
-  if (file.type !== "image/jpeg" && file.type !== "image/png") {
+  if (!file.type.startsWith('image')) {
     return false;
   } else {
     return true;
   }
 };
 const post = async (url, data, vueApp, callback = () => {}) => {
+      // vueApp.$store.state.user.config
   await vueApp.$axios
     .post(
       vueApp.$store.state.app.state.apiUrl + url,
       data,
-      vueApp.$store.state.user.config
     )
     .then(result => {
+      console.log(result)
       vueApp.$successNot(result.data.message, vueApp)
     })
     .catch(err => {
-      vueApp.$successNot(
+      vueApp.$errorNot(
         err.response.data.message,
         vueApp
       );
@@ -79,5 +87,6 @@ export {
     post,
     Delete,
     format,
-    imgCheck
+    imgCheck,
+    videoCheck
 }
