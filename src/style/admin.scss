@@ -1,0 +1,165 @@
+$black : #1b2a38;
+$dark_black: #030f1c;
+$blue: #699be5;
+$white : #EAE8E8;
+$grey: #f1f1f1;
+$dark_grey: #708090;
+
+/* width */
+::-webkit-scrollbar {
+    width: 7px;
+    margin: 2px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    background: $black;
+    border-radius: 10px;
+
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: $white;
+    border: 1px solid #f1f1f1;
+    border-radius: 10px;
+}
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #ffffff;
+}
+
+.admin_sidebar{
+    background-color: $black;
+    height: 100%;
+}
+.admin_body{
+    background-color: $dark_black;
+}
+.h_100{
+    height: 100vh;
+}
+.overflow{
+    overflow-y: auto;
+    overflow-x: auto;
+}
+.border_bottom{
+    border-bottom: 1px solid $white
+}
+ul{
+    li{
+    list-style-type: none;
+    color: $white;
+    font-size: 0.8em;
+    font-weight: bold;
+    }
+    i{
+        font-size: 1.4em !important;
+    }
+    li:hover{
+        background-color: $dark_black;
+        border-radius: 5px;
+    }
+
+}
+.red{
+    background-color: red;
+}
+.active{
+    background-color: $dark_black;
+}
+.border_radius{
+    border-radius: 5px;
+}
+.font_sm{
+    font-size: 0.7em;
+    color: $white;
+}
+.upload_box{
+    color: $white;
+    height: 200px;
+    background: $black;
+    border-radius: 5px;
+    cursor: pointer;
+    i{
+        font-size: 2.2em
+    }
+}
+.admin_form {
+    textarea{
+        background-color: $black;
+        border-radius: 5px;
+        padding: 5px;
+        padding-left: 7px;
+        margin: 5px;
+        border: transparent;
+        outline: none;
+        height: 150px;
+        color: $white;
+        font-size: 0.8em;
+    }
+    select{
+        background-color: $black;
+        border-radius: 5px;
+        padding: 5px;
+        padding-left: 7px;
+        margin: 5px;
+        border: transparent;
+        height: 40px;
+        outline: none;
+        color: $white;
+        font-size: 0.9em;
+    }
+    option{ color: $white;
+    font-size: 0.8em}
+    input{
+        background-color: $black;
+        border-radius: 5px;
+        padding: 5px;
+        padding-left: 7px;
+        margin: 5px;
+        border: transparent;
+        height: 40px;
+        outline: none;
+        color: $white;
+        font-size: 0.8em;
+    }
+    input::placeholder{
+        font-size: 0.7em;
+    }
+    button{
+        background: $blue;
+        color: $white;
+        font-size: 0.8em;
+        width: 120px;
+    }
+    button:hover{
+        color: $white
+    }
+}
+.hide{ display: none;}
+.title{
+    color: $white;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.admin_nav_bar{
+    background-color: $black;
+    z-index: 3;
+    top: 0;
+    height: 55px;
+}
+.route_body{
+    height: calc(100vh - 55px)
+}
+.border_radius_circle{
+    border-radius: 50%;
+}
+.trans_btn{
+    border: transparent;
+    background: transparent;
+    outline: none !important;
+    color: $white;
+    font-size: 1.2em;
+}
+.trans_btn:hover{
+    color: $dark_grey
+}
