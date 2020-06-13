@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-  <loader v-if="this.$store.state.app.state.loader === true"/>
+    <loader v-if="this.$store.state.app.loader === true" />
     <router-view />
   </div>
 </template>
 <script>
-import loader from './components/loader.vue'
+import loader from "./components/loader.vue";
 export default {
   components: {
     loader
   }
-}
+};
 </script>
 <style lang="scss">
 #app {

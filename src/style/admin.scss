@@ -4,10 +4,13 @@ $blue: #699be5;
 $white : #EAE8E8;
 $grey: #f1f1f1;
 $dark_grey: #708090;
-
+$brown: #828282;
+$box_shadow: 0 2px 2px 0 rgba(255,255,255, 0.14),0 3px 1px -2px rgba(255,255,255, 0.12), 0 1px 5px 0 rgba(255,255,255, 0.2);
+$webkit_shadow: 0 2px 2px 0 rgba(255,255,255, 0.14), 0 3px 1px -2px rgba(255,255,255, 0.12), 0 1px 5px 0 rgba(255,255,255, 0.2);
 /* width */
 ::-webkit-scrollbar {
-    width: 7px;
+    width: 2px;
+    height: 2px;  
     margin: 2px;
 }
 /* Track */
@@ -44,27 +47,31 @@ $dark_grey: #708090;
 .border_bottom{
     border-bottom: 1px solid $white
 }
+.no_link_style{
+    text-decoration: none !important;
+}
 ul{
     li{
-    list-style-type: none;
-    color: $white;
-    font-size: 0.8em;
-    font-weight: bold;
+        list-style-type: none;
+        color: $white;
+        font-size: 0.9em;
+        font-weight: bold;
+        cursor: pointer;
     }
     i{
         font-size: 1.4em !important;
     }
     li:hover{
         background-color: $dark_black;
-        border-radius: 5px;
+        border-left: 2px solid $brown
     }
-
 }
 .red{
     background-color: red;
 }
 .active{
     background-color: $dark_black;
+        border-left: 3px solid $brown
 }
 .border_radius{
     border-radius: 5px;
@@ -147,6 +154,10 @@ ul{
     top: 0;
     height: 55px;
 }
+.box_shadow {
+    box-shadow: $box_shadow;
+    -webkit-box-shadow: $webkit_shadow;
+}
 .route_body{
     height: calc(100vh - 55px)
 }
@@ -162,4 +173,51 @@ ul{
 }
 .trans_btn:hover{
     color: $dark_grey
+}
+.movie{
+    cursor: pointer;
+    .movie_name{
+        font-size: 0.9em;
+        color: $white;
+        font-weight: bold;
+    }
+    .img_cont{
+        width: 200px;
+        height: 200px;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-color: $black;
+    }
+    .mdi-star {
+        font-size: 0.5em;
+    }
+    .views {
+        font-size: 0.6em;
+    }
+}
+.white_text{
+    color: $white;
+}
+
+.sub_heading{
+    color: $white;
+    font-size: 1em;
+    font-weight: bold;
+}
+.view_btn:hover{
+    background: $white;
+}
+.white_btn {
+    background-color: $white;
+    color: $black;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    i {
+        font-size: 1.5em;
+    }
 }

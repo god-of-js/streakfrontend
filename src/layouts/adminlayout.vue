@@ -1,26 +1,25 @@
 <template>
-    <div class="d-flex h_100" >
-    <sidebar class="col-2"/>
-    <div class="col-10 admin_body h_100 p-0 overflow"> 
-    <navbar />
-    <div class="route_body overflow">
+  <div class="d-flex h_100">
+    <sidebar class="col-2" />
+    <div class="col-10 admin_body h_100 p-0 overflow">
+      <navbar />
+      <div class="route_body overflow">
         <router-view></router-view>
-     </div>
+      </div>
     </div>
-    </div>
+  </div>
 </template>
 <script>
-import sidebar from '../components/admin/adminsidebar.vue'
-import navbar from '../components/admin/adminnavbar.vue'
+import sidebar from "../components/admin/components/adminsidebar.vue";
+import navbar from "../components/admin/components/adminnavbar.vue";
 export default {
-    components: {
-        sidebar,
-        navbar
-    }
-    
-}
+  components: {
+    sidebar,
+    navbar
+  }
+};
 </script>
 <style lang="scss">
- @import "../style/admin.scss";
- @import "../style/adminresponsive.scss";
+@import "../style/admin.scss";
+@import "../style/adminresponsive.scss";
 </style>

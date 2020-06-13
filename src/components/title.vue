@@ -1,5 +1,5 @@
 <template>
-    <div class="bluestreak_title">
-        BlueStreak
-    </div>
+  <div class="bluestreak_title">
+    BlueStreak
+  </div>
 </template>
