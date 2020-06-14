@@ -4,7 +4,7 @@ import login from "../views/auth/login.vue";
 
 export default [
   {
-    path: "/auth-layout",
+    path: "/",
     component: authlayout,
     name: "auth-layout",
     children: [
@@ -14,7 +14,7 @@ export default [
         name: "register"
       },
       {
-        path: "/login",
+        path: "/",
         component: login,
         name: "login"
       }

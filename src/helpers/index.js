@@ -28,7 +28,11 @@ const imgCheck = file => {
 const post = async (url, data, vueApp, callback = () => {}) => {
   // vueApp.$store.state.user.config
   await vueApp.$axios
-    .post(vueApp.$store.state.app.apiUrl + url, data, vueApp.$store.state.user.token)
+    .post(
+      vueApp.$store.state.app.apiUrl + url,
+      data,
+      vueApp.$store.state.user.token
+    )
     .then(result => {
       console.log(result);
       vueApp.$successNot(result.data.message, vueApp);

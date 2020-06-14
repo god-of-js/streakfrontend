@@ -5,12 +5,11 @@ export default {
     await vueApp.$axios
       .post(vueApp.$store.state.app.apiUrl + regApiUrl, userData)
       .then(result => {
-        vueApp.$store.commit('user/setUser', result.data.data)
-        vueApp.$store.commit('user/setJwt', result.data.jwt)
+        vueApp.$store.commit("user/setUser", result.data.data);
+        vueApp.$store.commit("user/setJwt", result.data.jwt);
         vueApp.$successNot(result.data.message, vueApp);
-        console.log(result.data)
+        console.log(result.data);
         vueApp.$router.push("/admin-dashboard");
-        
       })
       .catch(err => {
         vueApp.$errorNot(err.response.data.message, vueApp);
@@ -24,8 +23,8 @@ export default {
     await vueApp.$axios
       .post(vueApp.$store.state.app.apiUrl + loginApiUrl, userData)
       .then(result => {
-        vueApp.$store.commit('user/setUser', result.data.data)
-        vueApp.$store.commit('user/setJwt', result.data.jwt)
+        vueApp.$store.commit("user/setUser", result.data.data);
+        vueApp.$store.commit("user/setJwt", result.data.jwt);
         vueApp.$successNot(result.data.message, vueApp);
         vueApp.$router.push("/admin-dashboard");
       })
