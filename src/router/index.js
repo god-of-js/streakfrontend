@@ -2,6 +2,7 @@ import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import auth from "./auth.js";
+import user from "./user.js";
 import admin from "./admin.js";
 
 Vue.use(VueRouter);
@@ -11,6 +12,7 @@ const routes = [
     path: "*",
     redirect: "/"
   },
+  { path: "/view-movie-*" },
   {
     path: "/home",
     name: "Home",
@@ -26,7 +28,8 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue")
   },
   ...auth,
-  ...admin
+  ...admin,
+  ...user
 ];
 
 const router = new VueRouter({

@@ -6,7 +6,7 @@
     <ul class="pt-5 pl-0 pr-0 ">
       <li
         @click="setActiveClass(path)"
-        v-for="(path, index) in arr"
+        v-for="(path, index) in paths"
         :key="index"
         :class="
           $router.history.current.fullPath === path.path
@@ -15,13 +15,7 @@
         "
         :id="path.name"
       >
-        <img
-          :src="path.icon"
-          alt="BlueStreak icon"
-          style="color: #EAE8E8"
-          class="mr-3 sidebar_icon"
-          width="23"
-        />
+        <img :src="path.icon" alt="BlueStreak icon" class="mr-3" width="23" />
         <span>{{ path.name }}</span>
       </li>
     </ul>
@@ -29,9 +23,6 @@
 </template>
 <script>
 export default {
-  props: {
-    arr: Array
-  },
   data: () => {
     return {
       inactiveClass: "text-left pl-3 p-2 d-flex align-items-center mt-4 "
@@ -43,8 +34,8 @@ export default {
   methods: {
     setActiveClass(path) {
       let id;
-      for (let i = 0; i < this.arr.length; i++) {
-        id = document.getElementById(this.arr[i].name);
+      for (let i = 0; i < this.paths.length; i++) {
+        id = document.getElementById(this.paths[i].name);
         id.classList.remove("active");
       }
       document.querySelector(`#${path.name}`).classList.add("active");

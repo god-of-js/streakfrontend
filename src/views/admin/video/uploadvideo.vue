@@ -215,6 +215,7 @@ export default {
       formData.append("title", this.title);
       formData.append("media", this.img);
       formData.append("date", this.date);
+      formData.append("dateAdded", Date.now());
       formData.append("description", this.description);
       formData.append("media", this.video);
       formData.append("cast", this.cast);

@@ -1,5 +1,7 @@
 $black : #1b2a38;
+// $black : #020228;
 $dark_black: #030f1c;
+// $dark_black: #011031;
 $blue: #699be5;
 $white : #EAE8E8;
 $grey: #f1f1f1;
@@ -29,7 +31,6 @@ $webkit_shadow: 0 2px 2px 0 rgba(255,255,255, 0.14), 0 3px 1px -2px rgba(255,255
 ::-webkit-scrollbar-thumb:hover {
     background: #ffffff;
 }
-
 .admin_sidebar{
     background-color: $black;
     height: 100%;
@@ -44,6 +45,9 @@ $webkit_shadow: 0 2px 2px 0 rgba(255,255,255, 0.14), 0 3px 1px -2px rgba(255,255
     overflow-y: auto;
     overflow-x: auto;
 }
+.no_overflow{
+    overflow-x: none;
+}
 .border_bottom{
     border-bottom: 1px solid $white
 }
@@ -57,6 +61,9 @@ ul{
         font-size: 0.9em;
         font-weight: bold;
         cursor: pointer;
+        .sidebar_icon{
+            color: $white;
+        }
     }
     i{
         font-size: 1.4em !important;
@@ -71,10 +78,17 @@ ul{
 }
 .active{
     background-color: $dark_black;
-        border-left: 3px solid $brown
+    border-left: 3px solid $brown
 }
 .border_radius{
     border-radius: 5px;
+}
+.rate_btn{
+    font-size: 1.6em;
+    border: transparent;
+    display: block;
+    background-color: transparent;
+    padding: 0px !important;
 }
 .font_sm{
     font-size: 0.7em;
@@ -171,15 +185,31 @@ ul{
     color: $white;
     font-size: 1.2em;
 }
+.small_icon{
+    font-size: 0.7em;
+}
 .trans_btn:hover{
     color: $dark_grey
 }
 .movie{
     cursor: pointer;
+    .percent_rated{
+        font-size: 0.7em;
+        color: $white;
+    }
     .movie_name{
         font-size: 0.9em;
         color: $white;
         font-weight: bold;
+    }
+    .action_icon{
+        display: none;
+    }
+    .video_cont{
+        width: 200px;
+        height: 200px;
+        display: none;
+       
     }
     .img_cont{
         width: 200px;
@@ -191,6 +221,9 @@ ul{
         background-position: center center;
         background-repeat: no-repeat;
         background-color: $black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     .mdi-star {
         font-size: 0.5em;
@@ -199,10 +232,20 @@ ul{
         font-size: 0.6em;
     }
 }
+.movie:hover{
+    .img_cont{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow:inset 0 0 0 2000px  rgba(0,0,0, 0.12);
+    }
+    .action_icon{
+        display: block;
+    }
+}
 .white_text{
     color: $white;
 }
-
 .sub_heading{
     color: $white;
     font-size: 1em;
@@ -220,4 +263,26 @@ ul{
     i {
         font-size: 1.5em;
     }
+}
+.movie_page{
+    height: 100%;
+}
+.movie_half{
+    height: 40vh;
+    width: 100%;
+}
+.movie_display{
+    width: 100%;
+    .container{
+        max-height: 60%;
+    }
+    .title_view{
+        color: $white;
+        font-size: 1.3em;
+
+    }
+}
+.movie_description{
+    color: $white;
+    font-size: 0.9em;
 }

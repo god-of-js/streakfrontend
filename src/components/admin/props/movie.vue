@@ -13,12 +13,12 @@
         >
         </i>
       </div>
-      <button
-        class="d-flex align-items-center white_text views btn view_btn pt-0 pb-0 pl-2 pr-2"
+      <div
+        class="d-flex align-items-center white_text views pt-0 pb-0 pl-2 pr-2"
       >
         <i class="mdi mdi-eye"> </i>
         <span class=" ml-2">{{ views }}</span>
-      </button>
+      </div>
     </div>
   </div>
 </template>

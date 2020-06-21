@@ -9,7 +9,10 @@ export default {
         vueApp.$store.commit("user/setJwt", result.data.jwt);
         vueApp.$successNot(result.data.message, vueApp);
         console.log(result.data);
-        vueApp.$router.push("/admin-dashboard");
+        if (result.data.data.accountType === "admin")
+          vueApp.$router.push("/admin-dashboard");
+        else if (result.data.data.accountType === "user")
+          vueApp.$router.push("/movie-list");
       })
       .catch(err => {
         vueApp.$errorNot(err.response.data.message, vueApp);
@@ -26,7 +29,10 @@ export default {
         vueApp.$store.commit("user/setUser", result.data.data);
         vueApp.$store.commit("user/setJwt", result.data.jwt);
         vueApp.$successNot(result.data.message, vueApp);
-        vueApp.$router.push("/admin-dashboard");
+        if (result.data.data.accountType === "admin")
+          vueApp.$router.push("/admin-dashboard");
+        else if (result.data.data.accountType === "user")
+          vueApp.$router.push("/movie-list");
       })
       .catch(err => {
         console.log(err.response);

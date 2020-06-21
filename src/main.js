@@ -7,6 +7,7 @@ import bluestreak from "./components/title.vue";
 import VueIziToast from "vue-izitoast";
 import "izitoast/dist/css/iziToast.css";
 import adminmovie from "./components/admin/props/movie.vue";
+import usermovie from "./components/user/props/movie.vue";
 import {
   errorNot,
   successNot,
@@ -18,6 +19,7 @@ import {
 } from "./helpers";
 import axios from "axios";
 Vue.component("adminmovie", adminmovie);
+Vue.component("usermovie", usermovie);
 Vue.config.productionTip = false;
 Vue.component("bluestreak", bluestreak);
 Vue.prototype.$errorNot = errorNot;
