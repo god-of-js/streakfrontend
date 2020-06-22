@@ -25,8 +25,7 @@ const imgCheck = file => {
     return true;
   }
 };
-const post = async (url, data, vueApp, callback = () => {}) => {
-  // vueApp.$store.state.user.config
+const post = async (url, data, vueApp, callback = () => {}, type = null) => {
   await vueApp.$axios
     .post(
       vueApp.$store.state.app.apiUrl + url,
@@ -36,6 +35,9 @@ const post = async (url, data, vueApp, callback = () => {}) => {
     .then(result => {
       console.log(result);
       vueApp.$successNot(result.data.message, vueApp);
+      if(type === 'series_add') {
+        vueApp.$router.push(`/admin-view-series=${result.data.data._id}`)
+      }
     })
     .catch(err => {
       vueApp.$errorNot(err.response.data.message, vueApp);

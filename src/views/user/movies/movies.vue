@@ -12,6 +12,7 @@
           :img="movie.imgUrl"
           :video="movie.videoUrl"
           :id="movie._id"
+          :func="watchMovie"
           :rating="movie.rating"
         />
       </div>
@@ -26,6 +27,7 @@
           :name="movie.name"
           :img="movie.img"
           :rating="movie.rating"
+          :func="watchMovie"
         />
       </div>
     </div>
@@ -39,6 +41,7 @@
           :name="movie.name"
           :img="movie.img"
           :rating="movie.rating"
+          :func="watchMovie"
         />
       </div>
     </div>
@@ -55,6 +58,7 @@
           :name="movie.title"
           :img="movie.imgUrl"
           :rating="movie.rating"
+          :func="watchMovie"
         />
       </div>
     </div>
@@ -128,6 +132,11 @@ export default {
     this.$store.dispatch("adminMovies/getRecentlyAddedMovies", {
       vueApp: this
     });
+  },
+  methods: {
+    watchMovie(movie) {
+      this.$router.push(`/view-movie_viewkey=${movie._id}`);
+    }
   }
 };
 </script>

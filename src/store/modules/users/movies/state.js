@@ -1,3 +1,3 @@
 export default {
-  movie: {name: 'henry'}
+  movie: { name: "henry" }
 };

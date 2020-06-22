@@ -7,7 +7,9 @@ import bluestreak from "./components/title.vue";
 import VueIziToast from "vue-izitoast";
 import "izitoast/dist/css/iziToast.css";
 import adminmovie from "./components/admin/props/movie.vue";
+import addseries from "./components/admin/props/addseries.vue";
 import usermovie from "./components/user/props/movie.vue";
+import timelinemovie from "./components/user/props/timelinemovie.vue";
 import {
   errorNot,
   successNot,
@@ -19,7 +21,9 @@ import {
 } from "./helpers";
 import axios from "axios";
 Vue.component("adminmovie", adminmovie);
+Vue.component("addseries", addseries);
 Vue.component("usermovie", usermovie);
+Vue.component("timelinemovie", timelinemovie);
 Vue.config.productionTip = false;
 Vue.component("bluestreak", bluestreak);
 Vue.prototype.$errorNot = errorNot;

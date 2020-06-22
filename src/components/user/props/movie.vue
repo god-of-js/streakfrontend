@@ -1,11 +1,7 @@
 <template>
-  <div
-    class="m-3 movie"
-    @mouseover="viewMovie(id)"
-    @mouseout="stopVideo(id)"
-    @click="watchMovie(movie)"
-  >
+  <div class="m-3 movie" @mouseover="viewMovie(id)" @mouseout="stopVideo(id)">
     <div
+      @click="func(movie)"
       class="img_cont"
       :id="id + '_image'"
       :style="{ backgroundImage: `url(${img})` }"
@@ -32,7 +28,7 @@
           <span class=" ml-2">{{ views }} </span>
         </div>
       </div>
-      <div> <button class="trans_btn mdi mdi-dots-vertical"> </button> </div>
+      <div><button class="trans_btn mdi mdi-dots-vertical"></button></div>
     </div>
   </div>
 </template>
@@ -45,7 +41,8 @@ export default {
     rating: Number,
     video: String,
     views: [String, Number],
-    movie: Object
+    movie: Object,
+    func: Function
   },
   methods: {
     viewMovie(id) {
@@ -63,10 +60,6 @@ export default {
         img_background.style.display = "flex";
         video_background.style.display = "none";
       }, 1500);
-    },
-    watchMovie(movie) {
-      this.$router.push(`/view-movie_viewkey=${movie._id}`);
-      movie;
     }
   }
 };

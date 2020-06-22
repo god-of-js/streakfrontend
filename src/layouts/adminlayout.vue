@@ -22,14 +22,19 @@ export default {
           icon: "/img/dashboard.png"
         },
         {
-          name: "Users",
+          name: "USERS",
           path: "/users",
           icon: "/img/users.png"
         },
         {
-          name: "Movies",
+          name: "MOVIES",
           path: "/admin-view-movies",
           icon: "/img/movies.png"
+        },
+        {
+          name: "SERIES",
+          path: "/admin-view-series",
+          icon: "/img/series.svg"
         },
         {
           name: "ANIME",

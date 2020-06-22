@@ -1,64 +1,79 @@
 <template>
   <div>
     <div>
-      <div class="text-left pl-3 pt-3 sub_heading">Top Rated Movies</div>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="text-left pl-3 pt-3 sub_heading">
+          Recently Added <small class="ml-2">- series </small>
+        </div>
+        <router-link to="/series-upload" class="no_link_style">
+          <button class="btn white_btn pt-0 pb-0 pl-2 pr-2 mr-2  mt-3">
+            <i class="mdi mdi-plus"> </i> Add New Series
+          </button>
+        </router-link>
+      </div>
       <div class="d-flex overflow p-2">
-        <adminmovie
+        <usermovie
           v-for="(movie, index) in moviesCollection"
           :key="index"
           :views="movie.view"
           :name="movie.title"
+          :movie="movie"
           :img="movie.imgUrl"
+          :video="movie.videoUrl"
+          :id="movie._id"
+          :func="watchMovie"
           :rating="movie.rating"
         />
       </div>
     </div>
     <div>
-      <div class="text-left pl-3 pt-3 sub_heading">Most Watched Movies</div>
+      <div class="text-left pl-3 pt-3 sub_heading">
+        Top Rated <small class="ml-2">- series </small>
+      </div>
       <div class="d-flex overflow p-2">
-        <adminmovie
+        <usermovie
           v-for="(movie, index) in movies"
           :key="index"
           :views="movie.view"
           :name="movie.name"
           :img="movie.img"
           :rating="movie.rating"
+          :func="watchMovie"
         />
       </div>
     </div>
     <div>
-      <div class="text-left pl-3 pt-3 sub_heading">Least Watched Movies</div>
+      <div class="text-left pl-3 pt-3 sub_heading">
+        Trending Now <small class="ml-2">- series </small>
+      </div>
       <div class="d-flex overflow p-2">
-        <adminmovie
+        <usermovie
           v-for="(movie, index) in movies"
           :key="index"
           :views="movie.view"
           :name="movie.name"
           :img="movie.img"
           :rating="movie.rating"
+          :func="watchMovie"
         />
       </div>
     </div>
     <div>
       <div class="d-flex justify-content-between align-items-center">
         <div class="text-left pl-3 pt-3 sub_heading">
-          Recently Added <small class="ml-2">- movies </small>
+          most Rated <small class="ml-2">- series </small>
         </div>
-        <router-link to="/video-upload" class="no_link_style">
-          <button class="btn white_btn pt-0 pb-0 pl-2 pr-2 mr-2  mt-3">
-            <i class="mdi mdi-plus"> </i> Add New Movie
-          </button>
-        </router-link>
       </div>
 
       <div class="d-flex overflow p-2">
-        <adminmovie
+        <usermovie
           v-for="(movie, index) in recentlyAddedMovies"
           :key="index"
           :views="movie.view"
           :name="movie.title"
           :img="movie.imgUrl"
           :rating="movie.rating"
+          :func="watchMovie"
         />
       </div>
     </div>
@@ -132,6 +147,11 @@ export default {
     this.$store.dispatch("adminMovies/getRecentlyAddedMovies", {
       vueApp: this
     });
+  },
+  methods: {
+    watchMovie(movie) {
+      this.$router.push(`/view-movie_viewkey=${movie._id}`);
+    }
   }
 };
 </script>
