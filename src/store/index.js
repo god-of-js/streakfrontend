@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import app from "./modules/app/index.js";
-import adminMovies from "./modules/admin/movies/index.js";
+import movies from "./modules/movies";
 import userMovies from "./modules/users/movies/index.js";
 import user from "./modules/account/index.js";
 import VuexPersist from "vuex-persist";
@@ -19,7 +19,7 @@ export default new Vuex.Store({
   modules: {
     app,
     user,
-    adminMovies,
+    movies,
     userMovies
   }
 });

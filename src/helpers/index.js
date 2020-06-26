@@ -35,8 +35,11 @@ const post = async (url, data, vueApp, callback = () => {}, type = null) => {
     .then(result => {
       console.log(result);
       vueApp.$successNot(result.data.message, vueApp);
-      if(type === 'series_add') {
-        vueApp.$router.push(`/admin-view-series=${result.data.data._id}`)
+      if (type === "series_add") {
+        vueApp.$router.push({
+          name: "series-view",
+          params: { id: result.data.data._id }
+        });
       }
     })
     .catch(err => {

@@ -38,7 +38,7 @@ export default [
         name: "library"
       },
       {
-        path: `/view-movie_viewkey=:id`,
+        path: `/view-movie/:id`,
         component: movie,
         name: "user-movie"
       }

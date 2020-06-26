@@ -159,58 +159,56 @@ export default {
   },
   methods: {
     videofile() {
-      let err;
       const fileInput = document.querySelector(".file");
       const file = fileInput.files[0];
       if (!this.$videoCheck(file)) {
         this.$errorNot("Wrong format of Video", this);
-        throw err;
-      }
+      } else {
+
       this.video = file;
       document.querySelector("[video-name]").textContent = file.name;
+      }
     },
     imgfile() {
-      let err;
       const fileInput = document.querySelector(".imgfile");
       const file = fileInput.files[0];
       if (!this.$imgCheck(file)) {
         this.$errorNot("Wrong format of Image", this);
-        throw err;
-      }
+      } else {
       this.img = file;
       document.querySelector("[img-name]").textContent = file.name;
+      }
     },
     clickFile(file) {
       document.querySelector(`.${file}`).click();
     },
     droppedFile(e, type) {
       const file = e.dataTransfer.files;
-      console.log(file[0]);
       if (type === "video") {
         if (!this.$videoCheck(...file)) {
           this.$errorNot("Wrong format of Video", this);
-          throw e;
-        }
+        } else {
         this.video = file;
         document.querySelector("[video-name]").textContent = file[0].name;
+        }
       } else if (type === "img") {
         if (!this.$imgCheck(...file)) {
           this.$errorNot("Wrong format of Image", this);
-          throw e;
-        }
+        } else {
         this.img = file;
         document.querySelector("[img-name]").textContent = file[0].name;
+        }
       }
     },
     addCategory() {
       this.category.push(this.categorySelect);
     },
     uploadVideo() {
-      this.$store.state.app.loader = true;
+      this.$store.commit("app/loaderStatus", true);
       if (!this.video || !this.img) {
         this.$errorNot("You must provide both image and video", this);
-        this.$store.state.app.loader = false;
-      }
+        this.$store.commit("app/loaderStatus", false);
+      } else {
       let formData = new FormData();
       formData.append("title", this.title);
       formData.append("media", this.img);
@@ -223,8 +221,9 @@ export default {
       formData.append("category", this.category);
       formData.append("pg", this.pg);
       this.$post("/api/v1/admin/video-upload", formData, this, () => {
-        this.$store.state.app.loader = false;
+        this.$store.commit("app/loaderStatus", false);
       });
+      }
     }
   }
 };

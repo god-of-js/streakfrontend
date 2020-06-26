@@ -1,32 +1,21 @@
 <template>
   <div class="p-3">
     <div class=" m-3">
-      <div class="title">Create Series</div>
-      <div class="font_sm">Create series of different categories for users</div>
+      <div class="title">Add Season</div>
+      <div class="font_sm">Add season to Movie</div>
     </div>
     <form @submit.prevent="uploadVideo" class="admin_form col-10 mx-auto">
       <div class="d-flex">
         <div class="d-flex flex-column m-2 col">
-          <div class="text-left pl-2  font_sm">Series Title</div>
-          <input type="text" v-model="title" required />
+          <div class="text-left pl-2  font_sm">Season Number</div>
+          <input type="number" v-model="season" required />
         </div>
         <div class="d-flex flex-column m-2 col">
           <div class="text-left pl-2  font_sm">
-            Cast (seperate by commas)
+            Cast (seperate by commas and space)
           </div>
           <input type="text" v-model="cast" required maxlength="250" />
         </div>
-      </div>
-      <div class="d-flex flex-column col">
-        <div class="text-left pl-2  font_sm">Description of series</div>
-        <textarea
-          type="text"
-          v-model="description"
-          required
-          maxlength="600"
-          class="ml-2 mr-2"
-        />
-        <small v-if='description.length >= 600'>Maximum number of characters(1500) surpassed </small>
       </div>
       <div class="d-flex justify-content-between">
         <div
@@ -54,29 +43,6 @@
           <input type="file" class="imgfile hide" @change="imgfile" />
         </div>
       </div>
-      <div class="d-flex">
-        <div class="d-flex flex-column m-2 col">
-          <div class="text-left pl-2  font_sm">Category</div>
-          <select v-model="categorySelect" @change="addCategory" required>
-            <option
-              v-for="(cat, index) in moviecat"
-              :key="index"
-              @change="addCategory(cat.name)"
-            >
-              {{ cat.name }}
-            </option>
-          </select>
-          <small v-if="category.length !== 0" class="font_sm text-left">
-            <span v-for="(cat, index) in category" :key="index">
-              {{ cat }},
-            </span></small
-          >
-        </div>
-        <div class="d-flex flex-column m-2 col">
-          <div class="text-left pl-2  font_sm">Parental Guidiance</div>
-          <input type="number" v-model="pg" required />
-        </div>
-      </div>
       <div class="d-flex justify-content-end pr-4">
         <button class="btn">Upload Video</button>
       </div>
@@ -88,53 +54,10 @@ export default {
   name: "Upload-Video",
   data: () => {
     return {
-      title: null,
+      season: null,
       img: null,
-      date: null,
-      description: '',
-      pg: null,
       video: null,
-      cast: null,
-      movieType: null,
-      categorySelect: null,
-      category: [],
-      moviecat: [
-        { name: "Horror" },
-        { name: "Sci-Fi" },
-        { name: "Comedy" },
-        { name: "Sports" },
-        { name: "Western" },
-        { name: "War" },
-        { name: "Crime" },
-        { name: "Melodramas" },
-        { name: "Romance" },
-        { name: "Epic" },
-        { name: 'Biographical Films (or "Biopics") - or Historical' },
-        { name: "Documentary" },
-        { name: "Film noir" },
-        { name: "New wave films" },
-        { name: "Epic films" },
-        { name: "War films" },
-        { name: "Gangster films" },
-        { name: "Detective and mystery films" },
-        { name: "Spy films" },
-        { name: "Disaster films" },
-        { name: "Caper films" },
-        { name: "Foreign films" },
-        { name: "Romantic comedy " },
-        { name: "Adventure" },
-        { name: "Action and adventure films" },
-        { name: "Fantasy films" },
-        { name: "Musical films" },
-        { name: "Religious" },
-        { name: "Police films" },
-        { name: "Puppet films" },
-        { name: "Film adaptations" },
-        { name: "Blaxploitation films" },
-        { name: "Thrillers" },
-        { name: "Frankenstein films" },
-        { name: "Star Wars films" }
-      ]
+      cast: null
     };
   },
   methods: {
@@ -182,26 +105,23 @@ export default {
         document.querySelector("[img-name]").textContent = file[0].name;
       }
     },
-    addCategory() {
-      this.category.push(this.categorySelect);
-    },
     uploadVideo() {
       this.$store.commit("app/loaderStatus", true);
       if (!this.video || !this.img) {
         this.$errorNot("You must provide both image and video", this);
         this.$store.commit("app/loaderStatus", false);
-      }
+      } else {
+
+      let id = this.$router.history.current.params.id;
       let formData = new FormData();
-      formData.append("title", this.title);
+      formData.append("season", this.season);
       formData.append("media", this.img);
-      formData.append("date", this.date);
-      formData.append("description", this.description);
       formData.append("media", this.video);
       formData.append("cast", this.cast);
-      formData.append("category", this.category);
-      formData.append("pg", this.pg);
+      formData.append("movieId", id);
+      console.log('ahhh')
       this.$post(
-        "/api/v1/admin/series-upload",
+        "/api/v1/admin/season-add",
         formData,
         this,
         () => {
@@ -209,6 +129,7 @@ export default {
         },
         "series_add"
       );
+      }
     }
   }
 };

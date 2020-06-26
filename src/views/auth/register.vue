@@ -70,14 +70,11 @@ export default {
   },
   methods: {
     register() {
-      this.$store.state.app.loader = true;
+      this.$store.commit("app/loaderStatus", true);
       if (this.cpassword !== this.data.password) {
         this.$store.state.app.loader = false;
         this.$errorNot("Try matching your password", this);
-        let err;
-        throw err;
-      }
-      auth.reg(this.data, this);
+      } else auth.reg(this.data, this);
     }
   }
 };

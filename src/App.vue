@@ -1,12 +1,18 @@
 <template>
   <div id="app">
-    <loader v-if="this.$store.state.app.loader === true" />
+    <loader v-if="loader === true" />
     <router-view />
   </div>
 </template>
 <script>
 import loader from "./components/loader.vue";
+import {mapState} from 'vuex'
 export default {
+  computed: {
+    ...mapState({
+      loader: state => state.app.loader
+    })
+  },
   components: {
     loader
   }

@@ -1,10 +1,8 @@
 <template>
-  <div
-    class="m-3 movie"
-  >
+  <div class="m-3 movie">
     <div
       class="img_cont"
-      @click="func(movie)"
+      @click="typeCheck"
       :id="id + '_image'"
       :style="{ backgroundImage: `url(${img})` }"
     >
@@ -38,24 +36,16 @@ export default {
     video: String,
     views: [String, Number],
     movie: Object,
-    func: Function
+    func: Function,
+    type: String
   },
   methods: {
-    viewMovie(id) {
-      let img_background = document.getElementById(id + "_image");
-      let video_background = document.getElementById(id + "_video");
-      setTimeout(() => {
-        img_background.style.display = "none";
-        video_background.style.display = "block";
-      }, 1500);
+    typeCheck() {
+      if (this.type === "movie") this.viewMovie();
+      if (this.type === "series") this.viewSerie();
     },
-    stopVideo(id) {
-      let img_background = document.getElementById(id + "_image");
-      let video_background = document.getElementById(id + "_video");
-      setTimeout(() => {
-        img_background.style.display = "flex";
-        video_background.style.display = "none";
-      }, 1500);
+    viewSerie() {
+      this.$router.push({ name: "series-view", params: { id: this.id } });
     }
   }
 };

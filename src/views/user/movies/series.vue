@@ -137,7 +137,7 @@ export default {
   },
   methods: {
     watchMovie(movie) {
-      this.$router.push(`/view-movie_viewkey=${movie._id}`);
+      this.$router.push({ name: "user-movie", params: { id: movie._id } });
     }
   }
 };

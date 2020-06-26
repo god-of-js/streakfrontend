@@ -13,6 +13,7 @@ const routes = [
     redirect: "/"
   },
   { path: "/view-movie-*" },
+  { path: "/admin-view-series-seasons-*" },
   {
     path: "/home",
     name: "Home",

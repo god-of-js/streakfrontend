@@ -8,7 +8,6 @@ export default {
         vueApp.$store.commit("user/setUser", result.data.data);
         vueApp.$store.commit("user/setJwt", result.data.jwt);
         vueApp.$successNot(result.data.message, vueApp);
-        console.log(result.data);
         if (result.data.data.accountType === "admin")
           vueApp.$router.push("/admin-dashboard");
         else if (result.data.data.accountType === "user")
@@ -18,7 +17,7 @@ export default {
         vueApp.$errorNot(err.response.data.message, vueApp);
       })
       .finally(() => {
-        vueApp.$store.state.app.loader = false;
+        vueApp.$store.commit("app/loaderStatus", false);
         finish();
       });
   },
@@ -40,7 +39,7 @@ export default {
         finish();
       })
       .finally(() => {
-        vueApp.$store.state.app.loader = false;
+        vueApp.$store.commit("app/loaderStatus", false);
       });
   }
 };

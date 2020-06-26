@@ -45,7 +45,7 @@ export default {
   },
   methods: {
     login() {
-      this.$store.state.app.loader = true;
+      this.$store.commit("app/loaderStatus", true);
       auth.login(this.data, this);
     }
   }

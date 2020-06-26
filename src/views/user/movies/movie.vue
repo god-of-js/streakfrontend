@@ -52,20 +52,19 @@ export default {
   name: "movie",
   mounted() {
     let vueApp = this;
-    let url = window.location.href;
-    url = url.substr(41);
-    vueApp.$store.dispatch("adminMovies/getMovies", { vueApp });
-    vueApp.$store.dispatch("userMovies/fetchSingleMovie", { url, vueApp });
+    let url = this.$router.history.current.params.id;
+    vueApp.$store.dispatch("movies/getMovies", { vueApp });
+    vueApp.$store.dispatch("movies/fetchSingleMovie", { url, vueApp });
   },
   computed: {
     ...mapState({
-      movie: state => state.userMovies.movie,
-      moviesCollection: state => state.adminMovies.moviesCollection
+      movie: state => state.movies.movie,
+      moviesCollection: state => state.movies.moviesCollection
     })
   },
   methods: {
     watchMovie(movie) {
-      this.$router.push(`/view-movie_viewkey=${movie._id}`);
+      this.$router.push({ name: "user-movie", params: { id: movie._id } });
     }
   }
 };

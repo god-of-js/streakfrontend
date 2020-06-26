@@ -12,17 +12,16 @@
         </router-link>
       </div>
       <div class="d-flex overflow p-2">
-        <usermovie
-          v-for="(movie, index) in moviesCollection"
+        <adminmovie
+          v-for="(movie, index) in recentlyAddedSeries"
           :key="index"
           :views="movie.view"
           :name="movie.title"
           :movie="movie"
-          :img="movie.imgUrl"
-          :video="movie.videoUrl"
           :id="movie._id"
-          :func="watchMovie"
+          :img="movie.imgUrl"
           :rating="movie.rating"
+          :type="'series'"
         />
       </div>
     </div>
@@ -31,14 +30,13 @@
         Top Rated <small class="ml-2">- series </small>
       </div>
       <div class="d-flex overflow p-2">
-        <usermovie
-          v-for="(movie, index) in movies"
+        <adminmovie
+          v-for="(movie, index) in seriesCollection"
           :key="index"
           :views="movie.view"
-          :name="movie.name"
-          :img="movie.img"
+          :name="movie.title"
+          :img="movie.imgUrl"
           :rating="movie.rating"
-          :func="watchMovie"
         />
       </div>
     </div>
@@ -47,14 +45,13 @@
         Trending Now <small class="ml-2">- series </small>
       </div>
       <div class="d-flex overflow p-2">
-        <usermovie
+        <adminmovie
           v-for="(movie, index) in movies"
           :key="index"
           :views="movie.view"
           :name="movie.name"
           :img="movie.img"
           :rating="movie.rating"
-          :func="watchMovie"
         />
       </div>
     </div>
@@ -64,16 +61,14 @@
           most Rated <small class="ml-2">- series </small>
         </div>
       </div>
-
       <div class="d-flex overflow p-2">
-        <usermovie
-          v-for="(movie, index) in recentlyAddedMovies"
+        <adminmovie
+          v-for="(movie, index) in recentlyAddedSeries"
           :key="index"
           :views="movie.view"
           :name="movie.title"
           :img="movie.imgUrl"
           :rating="movie.rating"
-          :func="watchMovie"
         />
       </div>
     </div>
@@ -138,20 +133,16 @@ export default {
   },
   computed: {
     ...mapState({
-      moviesCollection: state => state.adminMovies.moviesCollection,
-      recentlyAddedMovies: state => state.adminMovies.recentlyAddedMovies
+      seriesCollection: state => state.movies.seriesCollection,
+      recentlyAddedSeries: state => state.movies.recentlyAddedSeries
     })
   },
   mounted() {
-    this.$store.dispatch("adminMovies/getMovies", { vueApp: this });
-    this.$store.dispatch("adminMovies/getRecentlyAddedMovies", {
+    this.$store.dispatch("movies/getSeries", { vueApp: this });
+    this.$store.dispatch("movies/getRecentlyAddedSeries", {
       vueApp: this
     });
   },
-  methods: {
-    watchMovie(movie) {
-      this.$router.push(`/view-movie_viewkey=${movie._id}`);
-    }
-  }
+  methods: {}
 };
 </script>

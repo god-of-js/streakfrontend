@@ -1,3 +1,5 @@
 export default {
-  makeNoise: () => {}
+  loaderStatus: (state, val) => {
+    state.loader = val;
+  }
 };

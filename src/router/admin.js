@@ -3,7 +3,7 @@ import videoupload from "../views/admin/video/uploadvideo.vue";
 import uploadseries from "../views/admin/video/uploadseries.vue";
 import movies from "../views/admin/video/movies.vue";
 import anime from "../views/admin/video/anime.vue";
-import addserie from "../views/admin/video/addserie.vue";
+import addserie from "../views/admin/video/addseason.vue";
 import series from "../views/admin/video/series.vue";
 import seriesview from "../views/admin/video/seriesview.vue";
 import settings from "../views/admin/adminapp/settings.vue";
@@ -28,7 +28,7 @@ export default [
       {
         path: "/series-upload",
         component: uploadseries,
-        name: "movies"
+        name: "moviesUpload"
       },
       {
         path: "/admin-settings",
@@ -46,14 +46,15 @@ export default [
         name: "Series"
       },
       {
-        path: "/admin-view-series=:id",
+        path: "/admin-view-series-seasons/:id",
         component: seriesview,
-        name: "Series"
+        name: "series-view",
+        params: true
       },
       {
-        path: "/add-season_serie-id=:id",
+        path: "/add-season-series/:id",
         component: addserie,
-        name: "Series"
+        name: "addSeries"
       },
       {
         path: "/admin-dashboard",
