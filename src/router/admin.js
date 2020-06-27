@@ -6,9 +6,12 @@ import anime from "../views/admin/video/anime.vue";
 import addserie from "../views/admin/video/addseason.vue";
 import series from "../views/admin/video/series.vue";
 import seriesview from "../views/admin/video/seriesview.vue";
+import addepisode from "../views/admin/video/addepisode.vue";
+import episodes from "../views/admin/video/episodes.vue";
 import settings from "../views/admin/adminapp/settings.vue";
 import dashboard from "../views/admin/adminapp/dashboard.vue";
 import users from "../views/admin/adminapp/users.vue";
+
 export default [
   {
     path: "/adminlayout",
@@ -29,6 +32,16 @@ export default [
         path: "/series-upload",
         component: uploadseries,
         name: "moviesUpload"
+      },
+      {
+        path: "/add-episode/:seriesid/:seasonid",
+        component: addepisode,
+        name: "addepisode"
+      },
+      {
+        path: "/episodes/:seriesid/:seasonid",
+        component: episodes,
+        name: "episodes"
       },
       {
         path: "/admin-settings",

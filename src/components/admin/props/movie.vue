@@ -43,9 +43,14 @@ export default {
     typeCheck() {
       if (this.type === "movie") this.viewMovie();
       if (this.type === "series") this.viewSerie();
+      if (this.type === 'episodes') this.viewEpisodes();
     },
     viewSerie() {
       this.$router.push({ name: "series-view", params: { id: this.id } });
+    },
+    viewEpisodes() {
+    let seriesId = this.$router.history.current.params.id;
+      this.$router.push({ name: "episodes", params: { seriesid: seriesId, seasonid: this.id } });
     }
   }
 };

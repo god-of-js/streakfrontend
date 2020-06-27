@@ -16,5 +16,8 @@ export default {
   },
   setSerie(state, serie) {
     state.serie = serie;
+  },
+  setSeasonId(state, seasonId) {
+    state.seasonId = seasonId;
   }
 };

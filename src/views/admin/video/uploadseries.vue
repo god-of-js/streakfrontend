@@ -26,7 +26,7 @@
           maxlength="600"
           class="ml-2 mr-2"
         />
-        <small v-if='description.length >= 600'>Maximum number of characters(1500) surpassed </small>
+        <small v-if='description.length >= 600' class="small">Maximum number of characters(1500) surpassed </small>
       </div>
       <div class="d-flex justify-content-between">
         <div

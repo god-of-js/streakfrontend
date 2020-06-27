@@ -43,6 +43,9 @@ export default {
       let id = this.$router.history.current.params.id;
       this.$router.push({ name: "addSeries", params: { id: id } });
     },
+    season() {
+      this.$router.push()
+    }
   }
 };
 </script>

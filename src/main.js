@@ -8,6 +8,7 @@ import VueIziToast from "vue-izitoast";
 import "izitoast/dist/css/iziToast.css";
 import adminmovie from "./components/admin/props/movie.vue";
 import addseries from "./components/admin/props/addseries.vue";
+import moviepage from "./components/admin/props/moviepage.vue";
 import usermovie from "./components/user/props/movie.vue";
 import timelinemovie from "./components/user/props/timelinemovie.vue";
 import {
@@ -21,6 +22,7 @@ import {
 } from "./helpers";
 import axios from "axios";
 Vue.component("adminmovie", adminmovie);
+Vue.component("moviepage", moviepage);
 Vue.component("addseries", addseries);
 Vue.component("usermovie", usermovie);
 Vue.component("timelinemovie", timelinemovie);

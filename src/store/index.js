@@ -10,7 +10,8 @@ const vuexLocalStorage = new VuexPersist({
   key: "vuex",
   storage: window.localStorage,
   reducer: state => ({
-    user: state.user
+    user: state.user,
+    movies: state.movies
   })
 });
 

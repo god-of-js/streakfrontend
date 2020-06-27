@@ -55,7 +55,6 @@ export default {
       });
   },
   getSingleSeries({ commit }, { id, vueApp }) {
-    console.log("okay");
     vueApp.$axios
       .get(
         vueApp.$store.state.app.apiUrl +
@@ -63,7 +62,7 @@ export default {
         vueApp.$store.state.user.token
       )
       .then(response => {
-        console.log(response.data[0]);
+        console.log(response.data);
         commit("setSerie", response.data[0]);
       })
       .catch(err => console.log(err));
