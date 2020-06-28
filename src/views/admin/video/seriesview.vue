@@ -1,14 +1,17 @@
 <template>
   <div class="">
-  <div class="movie_cover d-flex  align-items-center p-3 " :style="`background-image: url(${serie.imgUrl})`"> 
-    <img :src="serie.imgUrl"  class="ml-3">
-    <div class="movie_preview_text ml-4 text-left"> 
-    <div class="large_title mb-2"> {{$format(serie.title)}} </div>
-    <div class="cast text-left mb-2"> {{$format(serie.cast)}} </div>
-    <div class="desc mt-2"> {{serie.description}}</div>
+    <div
+      class="movie_cover d-flex  align-items-center p-3 "
+      :style="`background-image: url(${serie.imgUrl})`"
+    >
+      <img :src="serie.imgUrl" class="ml-3" />
+      <div class="movie_preview_text ml-4 text-left">
+        <div class="large_title mb-2">{{ $format(serie.title) }}</div>
+        <div class="cast text-left mb-2">{{ $format(serie.cast) }}</div>
+        <div class="desc mt-2">{{ serie.description }}</div>
+      </div>
     </div>
-  </div>
-  <div class="md_text text-left ml-3 mb-0 pb-0">Seasons </div>
+    <div class="md_text text-left ml-3 mb-0 pb-0">Seasons</div>
     <div class="row ml-3 mr-3 ">
       <adminmovie
         v-for="(season, index) in serie.seasons"
@@ -26,7 +29,7 @@
   </div>
 </template>
 <script>
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({
@@ -42,7 +45,7 @@ export default {
     addSeries() {
       let id = this.$router.history.current.params.id;
       this.$router.push({ name: "addSeries", params: { id: id } });
-    },
+    }
   }
 };
 </script>

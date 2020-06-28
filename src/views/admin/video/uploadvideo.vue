@@ -164,9 +164,8 @@ export default {
       if (!this.$videoCheck(file)) {
         this.$errorNot("Wrong format of Video", this);
       } else {
-
-      this.video = file;
-      document.querySelector("[video-name]").textContent = file.name;
+        this.video = file;
+        document.querySelector("[video-name]").textContent = file.name;
       }
     },
     imgfile() {
@@ -175,8 +174,8 @@ export default {
       if (!this.$imgCheck(file)) {
         this.$errorNot("Wrong format of Image", this);
       } else {
-      this.img = file;
-      document.querySelector("[img-name]").textContent = file.name;
+        this.img = file;
+        document.querySelector("[img-name]").textContent = file.name;
       }
     },
     clickFile(file) {
@@ -188,15 +187,15 @@ export default {
         if (!this.$videoCheck(...file)) {
           this.$errorNot("Wrong format of Video", this);
         } else {
-        this.video = file;
-        document.querySelector("[video-name]").textContent = file[0].name;
+          this.video = file;
+          document.querySelector("[video-name]").textContent = file[0].name;
         }
       } else if (type === "img") {
         if (!this.$imgCheck(...file)) {
           this.$errorNot("Wrong format of Image", this);
         } else {
-        this.img = file;
-        document.querySelector("[img-name]").textContent = file[0].name;
+          this.img = file;
+          document.querySelector("[img-name]").textContent = file[0].name;
         }
       }
     },
@@ -209,20 +208,20 @@ export default {
         this.$errorNot("You must provide both image and video", this);
         this.$store.commit("app/loaderStatus", false);
       } else {
-      let formData = new FormData();
-      formData.append("title", this.title);
-      formData.append("media", this.img);
-      formData.append("date", this.date);
-      formData.append("dateAdded", Date.now());
-      formData.append("description", this.description);
-      formData.append("media", this.video);
-      formData.append("cast", this.cast);
-      formData.append("type", this.movieType);
-      formData.append("category", this.category);
-      formData.append("pg", this.pg);
-      this.$post("/api/v1/admin/video-upload", formData, this, () => {
-        this.$store.commit("app/loaderStatus", false);
-      });
+        let formData = new FormData();
+        formData.append("title", this.title);
+        formData.append("media", this.img);
+        formData.append("date", this.date);
+        formData.append("dateAdded", Date.now());
+        formData.append("description", this.description);
+        formData.append("media", this.video);
+        formData.append("cast", this.cast);
+        formData.append("type", this.movieType);
+        formData.append("category", this.category);
+        formData.append("pg", this.pg);
+        this.$post("/api/v1/admin/video-upload", formData, this, () => {
+          this.$store.commit("app/loaderStatus", false);
+        });
       }
     }
   }

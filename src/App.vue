@@ -6,7 +6,7 @@
 </template>
 <script>
 import loader from "./components/loader.vue";
-import {mapState} from 'vuex'
+import { mapState } from "vuex";
 export default {
   computed: {
     ...mapState({

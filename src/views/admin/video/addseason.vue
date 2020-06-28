@@ -111,24 +111,23 @@ export default {
         this.$errorNot("You must provide both image and video", this);
         this.$store.commit("app/loaderStatus", false);
       } else {
-
-      let id = this.$router.history.current.params.id;
-      let formData = new FormData();
-      formData.append("season", this.season);
-      formData.append("media", this.img);
-      formData.append("media", this.video);
-      formData.append("cast", this.cast);
-      formData.append("movieId", id);
-      console.log('ahhh')
-      this.$post(
-        "/api/v1/admin/season-add",
-        formData,
-        this,
-        () => {
-          this.$store.commit("app/loaderStatus", false);
-        },
-        "series_add"
-      );
+        let id = this.$router.history.current.params.id;
+        let formData = new FormData();
+        formData.append("season", this.season);
+        formData.append("media", this.img);
+        formData.append("media", this.video);
+        formData.append("cast", this.cast);
+        formData.append("movieId", id);
+        console.log("ahhh");
+        this.$post(
+          "/api/v1/admin/season-add",
+          formData,
+          this,
+          () => {
+            this.$store.commit("app/loaderStatus", false);
+          },
+          "series_add"
+        );
       }
     }
   }

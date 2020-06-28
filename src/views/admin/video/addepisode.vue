@@ -1,50 +1,145 @@
 <template>
-  <div class="">
-  <div class="movie_cover d-flex  align-items-center p-3 " :style="`background-image: url(${serie.imgUrl})`"> 
-    <img :src="serie.imgUrl"  class="ml-3">
-    <div class="movie_preview_text ml-4 text-left"> 
-    <div class="large_title mb-2"> {{$format(serie.title)}} </div>
-    <div class="cast text-left mb-2"> {{$format(serie.cast)}} </div>
-    <div class="desc mt-2"> {{serie.description}}</div>
+  <div class="p-3">
+    <div class=" m-3">
+      <div class="title">Add Episode</div>
+      <div class="font_sm">Add an episode to season  {{ getSeason[0].season }} of {{ $format(serie.title) }}</div>
     </div>
-  </div>
-  <div class="md_text text-left ml-3 mb-0 pb-0">Seasons </div>
-    <div class="row ml-3 mr-3 ">
-      <adminmovie
-        v-for="(season, index) in serie.seasons"
-        :key="index"
-        :views="50"
-        :name="`Season ${season.season}`"
-        :img="season.img_url"
-        :rating="7"
-        :movie="season"
-        :id="season._id"
-        :type="'episodes'"
-      />
-      <addseries :func="addSeries" />
-    </div>
+    <form @submit.prevent="uploadVideo" class="admin_form col-10 mx-auto">
+      <div class="d-flex">
+        <div class="d-flex flex-column m-2 col">
+          <div class="text-left pl-2  font_sm">Episode Number</div>
+          <input type="number" v-model="episode" required />
+        </div>
+        <div class="d-flex flex-column m-2 col">
+          <div class="text-left pl-2  font_sm">
+            Cast (seperate by commas and space)
+          </div>
+          <input type="text" v-model="cast" required maxlength="250" />
+        </div>
+      </div>
+      <div class="d-flex justify-content-between">
+        <div
+          class="upload_box d-flex align-items-center flex-column justify-content-center col-5 m-4"
+          @click="clickFile('file')"
+          @dragover.prevent
+          @drop.prevent="droppedFile($event, 'video')"
+        >
+          <i class="mdi mdi-upload"> </i>
+          <div class="font_sm" video-name>
+            Click to add Episode's video
+          </div>
+          <input type="file" class="file hide" @change="videofile" />
+        </div>
+        <div
+          class="upload_box d-flex align-items-center flex-column justify-content-center col-5 m-4"
+          @click="clickFile('imgfile')"
+          @dragover.prevent
+          @drop.prevent="droppedFile($event, 'img')"
+        >
+          <i class="mdi mdi-upload"> </i>
+          <div class="font_sm" img-name>
+            Click or Drag and drop to add cover Image
+          </div>
+          <input type="file" class="imgfile hide" @change="imgfile" />
+        </div>
+      </div>
+      <div class="d-flex justify-content-end pr-4">
+        <button class="btn">Upload Video</button>
+      </div>
+    </form>
   </div>
 </template>
 <script>
-import {mapState} from 'vuex'
+import {mapGetters, mapState} from 'vuex'
 export default {
+  name: "Upload-Video",
+  data: () => {
+    return {
+      episode: null,
+      img: null,
+      video: null,
+      cast: null
+    };
+  },
   computed: {
-    ...mapState({
+     ...mapState({
       serie: state => state.movies.serie
+    }),
+    ...mapGetters({
+      getSeason: "movies/getSeason"
     })
   },
-  mounted() {
-    let id = this.$router.history.current.params.id,
-      vueApp = this;
-    this.$store.dispatch("movies/getSingleSeries", { id, vueApp });
-  },
   methods: {
-    addSeries() {
-      let id = this.$router.history.current.params.id;
-      this.$router.push({ name: "addSeries", params: { id: id } });
+    videofile() {
+      let err;
+      const fileInput = document.querySelector(".file");
+      const file = fileInput.files[0];
+      if (!this.$videoCheck(file)) {
+        this.$errorNot("Wrong format of Video", this);
+        throw err;
+      }
+      this.video = file;
+      document.querySelector("[video-name]").textContent = file.name;
     },
-    season() {
-      this.$router.push()
+    imgfile() {
+      let err;
+      const fileInput = document.querySelector(".imgfile");
+      const file = fileInput.files[0];
+      if (!this.$imgCheck(file)) {
+        this.$errorNot("Wrong format of Image", this);
+        throw err;
+      }
+      this.img = file;
+      document.querySelector("[img-name]").textContent = file.name;
+    },
+    clickFile(file) {
+      document.querySelector(`.${file}`).click();
+    },
+    droppedFile(e, type) {
+      const file = e.dataTransfer.files;
+      console.log(file[0]);
+      if (type === "video") {
+        if (!this.$videoCheck(...file)) {
+          this.$errorNot("Wrong format of Video", this);
+          throw e;
+        }
+        this.video = file;
+        document.querySelector("[video-name]").textContent = file[0].name;
+      } else if (type === "img") {
+        if (!this.$imgCheck(...file)) {
+          this.$errorNot("Wrong format of Image", this);
+          throw e;
+        }
+        this.img = file;
+        document.querySelector("[img-name]").textContent = file[0].name;
+      }
+    },
+    uploadVideo() {
+      this.$store.commit("app/loaderStatus", true);
+      if (!this.video || !this.img) {
+        this.$errorNot("You must provide both image and video", this);
+        this.$store.commit("app/loaderStatus", false);
+        let e;
+        return e
+      } 
+        let seriesId = this.$router.history.current.params.seriesid, seasonId= this.$router.history.current.params.seasonid;
+        let formData = new FormData();
+        formData.append("episodeNumber", this.episode);
+        formData.append("media", this.img);
+        formData.append("media", this.video);
+        formData.append("cast", this.cast);
+        formData.append("seriesId", seriesId);
+        formData.append("seasonId", seasonId);
+        this.$post(
+          "/api/v1/admin/add-episode",
+          formData,
+          this,
+          () => {
+            this.$store.commit("app/loaderStatus", false);
+          },
+          "episode_add"
+        );
+      
     }
   }
 };
