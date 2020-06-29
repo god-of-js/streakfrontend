@@ -117,8 +117,7 @@ export default {
         formData.append("media", this.img);
         formData.append("media", this.video);
         formData.append("cast", this.cast);
-        formData.append("movieId", id);
-        console.log("ahhh");
+        formData.append("seriesId", id);
         this.$post(
           "/api/v1/admin/season-add",
           formData,
@@ -126,7 +125,7 @@ export default {
           () => {
             this.$store.commit("app/loaderStatus", false);
           },
-          "series_add"
+          'season_add'
         );
       }
     }

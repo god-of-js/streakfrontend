@@ -9,7 +9,7 @@
       </div>
       <div class="d-flex row d-flex justify-content-center p-2">
         <usermovie
-          v-for="(movie, index) in moviesCollection"
+          v-for="(movie, index) in moviesCollection.slice(0, 4)"
           :key="index"
           :views="movie.view"
           :name="movie.title"
@@ -31,7 +31,7 @@
       </div>
       <div class="d-flex row d-flex justify-content-center p-2">
         <usermovie
-          v-for="(movie, index) in moviesCollection"
+          v-for="(movie, index) in moviesCollection.slice(0, 4)"
           :key="index"
           :views="movie.view"
           :name="movie.title"
@@ -53,7 +53,7 @@
       </div>
       <div class="d-flex row d-flex justify-content-center p-2">
         <usermovie
-          v-for="(movie, index) in moviesCollection"
+          v-for="(movie, index) in moviesCollection.slice(0, 4)"
           :key="index"
           :views="movie.view"
           :name="movie.title"

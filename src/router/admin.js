@@ -39,7 +39,7 @@ export default [
         name: "addepisode"
       },
       {
-        path: "/episodes/:seriesid/:seasonid",
+        path: "/admin-view-season/:seriesid/:seasonid",
         component: episodes,
         name: "episodes"
       },

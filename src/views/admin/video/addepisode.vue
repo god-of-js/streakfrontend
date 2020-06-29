@@ -2,7 +2,10 @@
   <div class="p-3">
     <div class=" m-3">
       <div class="title">Add Episode</div>
-      <div class="font_sm">Add an episode to season  {{ getSeason[0].season }} of {{ $format(serie.title) }}</div>
+      <div class="font_sm">
+        Add an episode to season {{ getSeason[0].season }} of
+        {{ $format(serie.title) }}
+      </div>
     </div>
     <form @submit.prevent="uploadVideo" class="admin_form col-10 mx-auto">
       <div class="d-flex">
@@ -50,7 +53,7 @@
   </div>
 </template>
 <script>
-import {mapGetters, mapState} from 'vuex'
+import { mapGetters, mapState } from "vuex";
 export default {
   name: "Upload-Video",
   data: () => {
@@ -62,7 +65,7 @@ export default {
     };
   },
   computed: {
-     ...mapState({
+    ...mapState({
       serie: state => state.movies.serie
     }),
     ...mapGetters({
@@ -120,26 +123,33 @@ export default {
         this.$errorNot("You must provide both image and video", this);
         this.$store.commit("app/loaderStatus", false);
         let e;
-        return e
-      } 
-        let seriesId = this.$router.history.current.params.seriesid, seasonId= this.$router.history.current.params.seasonid;
-        let formData = new FormData();
-        formData.append("episodeNumber", this.episode);
-        formData.append("media", this.img);
-        formData.append("media", this.video);
-        formData.append("cast", this.cast);
-        formData.append("seriesId", seriesId);
-        formData.append("seasonId", seasonId);
-        this.$post(
-          "/api/v1/admin/add-episode",
-          formData,
-          this,
-          () => {
-            this.$store.commit("app/loaderStatus", false);
-          },
-          "episode_add"
-        );
-      
+        return e;
+      }
+      let seriesId = this.$router.history.current.params.seriesid,
+        seasonId = this.$router.history.current.params.seasonid;
+      let formData = new FormData();
+      formData.append("episodeNumber", this.episode);
+      formData.append("media", this.img);
+      formData.append("media", this.video);
+      formData.append("cast", this.cast);
+      formData.append("seriesId", seriesId);
+      formData.append("seasonId", seasonId);
+      this.$post(
+        "/api/v1/admin/add-episode",
+        formData,
+        this,
+        () => {
+          this.$store.commit("app/loaderStatus", false);
+        },
+        "episode_add",
+       () => {
+         this.$router.push({
+          name: "episodes",
+          params: {
+             seriesId: this.$router.history.current.params.seriesId , 
+             seasonId: this.$router.history.current.params.seasonId}});
+    }
+      );
     }
   }
 };

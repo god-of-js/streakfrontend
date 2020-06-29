@@ -123,13 +123,13 @@ export default {
   },
   computed: {
     ...mapState({
-      moviesCollection: state => state.adminMovies.moviesCollection,
-      recentlyAddedMovies: state => state.adminMovies.recentlyAddedMovies
+      moviesCollection: state => state.movies.moviesCollection,
+      recentlyAddedMovies: state => state.movies.recentlyAddedMovies
     })
   },
   mounted() {
-    this.$store.dispatch("adminMovies/getMovies", { vueApp: this });
-    this.$store.dispatch("adminMovies/getRecentlyAddedMovies", {
+    this.$store.dispatch("movies/getMovies", { vueApp: this });
+    this.$store.dispatch("movies/getRecentlyAddedMovies", {
       vueApp: this
     });
   },
