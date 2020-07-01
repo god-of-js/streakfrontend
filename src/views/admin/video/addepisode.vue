@@ -142,13 +142,15 @@ export default {
           this.$store.commit("app/loaderStatus", false);
         },
         "episode_add",
-       () => {
-         this.$router.push({
-          name: "episodes",
-          params: {
-             seriesId: this.$router.history.current.params.seriesId , 
-             seasonId: this.$router.history.current.params.seasonId}});
-    }
+        () => {
+          this.$router.push({
+            name: "episodes",
+            params: {
+              seriesId: this.$router.history.current.params.seriesId,
+              seasonId: this.$router.history.current.params.seasonId
+            }
+          });
+        }
       );
     }
   }

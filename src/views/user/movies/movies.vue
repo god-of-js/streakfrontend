@@ -49,7 +49,6 @@
       <div class="d-flex justify-content-between align-items-center">
         <div class="text-left pl-3 pt-3 sub_heading">Trending</div>
       </div>
-
       <div class="d-flex overflow p-2">
         <usermovie
           v-for="(movie, index) in recentlyAddedMovies"

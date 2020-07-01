@@ -14,6 +14,7 @@ const routes = [
   },
   { path: "/view-movie-*" },
   { path: "/admin-view-series-seasons-*" },
+  { path: "/view-episode-*" },
   {
     path: "/home",
     name: "Home",

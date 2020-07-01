@@ -5,7 +5,9 @@ import library from "../views/user/movies/library.vue";
 import series from "../views/user/movies/series.vue";
 import history from "../views/user/movies/history.vue";
 import anime from "../views/user/movies/anime.vue";
-
+import userviewserie from "../views/user/movies/userviewserie.vue";
+import viewepisode from "../views/user/movies/viewepisode.vue";
+import userviewseason from "../views/user/movies/userviewseason.vue";
 export default [
   {
     path: "/userlayout",
@@ -41,6 +43,21 @@ export default [
         path: `/view-movie/:id`,
         component: movie,
         name: "user-movie"
+      },
+      {
+        path: "/view-season/:seriesid/:seasonid",
+        component: userviewseason,
+        name: "user-view-season"
+      },
+      {
+        path: "/view-episode/:seriesid/:seasonid/:episodeid",
+        component: viewepisode,
+        name: "user-view-episode"
+      },
+      {
+        path: "/view-series-seasons/:id",
+        component: userviewserie,
+        name: "user-view-series"
       }
     ]
   }

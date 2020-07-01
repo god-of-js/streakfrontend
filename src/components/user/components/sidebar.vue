@@ -28,12 +28,11 @@ export default {
       inactiveClass: "text-left pl-3 p-2 d-flex align-items-center mt-4 "
     };
   },
-  beforeMount() {
-    console.log();
-  },
+  beforeMount() {},
   methods: {
     setActiveClass(path) {
       let id;
+      alert(path.path);
       for (let i = 0; i < this.paths.length; i++) {
         id = document.getElementById(this.paths[i].name);
         id.classList.remove("active");

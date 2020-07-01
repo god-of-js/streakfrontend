@@ -19,5 +19,8 @@ export default {
   },
   setSeasonId(state, seasonId) {
     state.seasonId = seasonId;
+  },
+  setEpisodeNumber(state, episodeNumber) {
+    state.episodeNumber = episodeNumber;
   }
 };

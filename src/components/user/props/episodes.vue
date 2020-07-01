@@ -1,7 +1,7 @@
 <template>
   <div class="m-3 movie" @mouseover="viewMovie(id)" @mouseout="stopVideo(id)">
     <div
-      @click="func(movie)"
+      @click="viewEpisodes"
       class="img_cont"
       :id="id + '_image'"
       :style="{ backgroundImage: `url(${img})` }"
@@ -40,8 +40,7 @@ export default {
     rating: Number,
     video: String,
     views: [String, Number],
-    movie: Object,
-    func: Function
+    movie: Object
   },
   methods: {
     viewMovie(id) {
@@ -59,6 +58,19 @@ export default {
         img_background.style.display = "flex";
         video_background.style.display = "none";
       }, 1500);
+    },
+    viewEpisodes(movie) {
+      movie.episodeNumber;
+      let seriesId = this.$router.history.current.params.seriesid;
+      let seasonId = this.$router.history.current.params.seasonid;
+      this.$router.push({
+        name: "user-view-episode",
+        params: {
+          seriesid: seriesId,
+          seasonid: seasonId,
+          episodeid: this.movie.episodeNumber
+        }
+      });
     }
   }
 };

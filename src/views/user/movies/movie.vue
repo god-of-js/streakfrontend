@@ -1,12 +1,18 @@
 <template>
   <div class="movie_page pt-4 no_overflow" :key="movie.videoUrl">
-    <div class="movie_display m-3 mt-0  pl-0 pr-4 p-0 pb-3 no_overflow">
+    <div
+      class="movie_display m-3 mt-0  pl-0 pr-4 p-0 pb-3 no_overflow"
+      :key="movie.title"
+    >
       <div class="container">
-        <video controls class="movie_half">
+        <video controls class="movie_half" :key="movie.videoUrl">
           <source :src="movie.videoUrl" />
         </video>
       </div>
-      <div class="d-flex mb-2 pl-4 justify-content-between pr-4">
+      <div
+        class="d-flex mb-2 pl-4 justify-content-between pr-4"
+        :key="movie.title"
+      >
         <div class="title_view">{{ $format(movie.title) }}</div>
         <div class="title_view">
           <button class="trans_btn small_icon">
@@ -52,9 +58,9 @@ export default {
   name: "movie",
   mounted() {
     let vueApp = this;
-    let url = this.$router.history.current.params.id;
+    let id = this.$router.history.current.params.id;
     vueApp.$store.dispatch("movies/getMovies", { vueApp });
-    vueApp.$store.dispatch("movies/fetchSingleMovie", { url, vueApp });
+    vueApp.$store.dispatch("movies/fetchSingleMovie", { id, vueApp });
   },
   computed: {
     ...mapState({
@@ -65,6 +71,7 @@ export default {
   methods: {
     watchMovie(movie) {
       this.$router.push({ name: "user-movie", params: { id: movie._id } });
+      this.$store.commit("movies/setMovie", movie);
     }
   }
 };

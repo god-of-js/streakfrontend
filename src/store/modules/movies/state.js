@@ -5,5 +5,6 @@ export default {
   recentlyAddedMovies: [],
   movie: {},
   serie: {},
-  seasonId: null
+  seasonId: null,
+  episodeNumber: null
 };

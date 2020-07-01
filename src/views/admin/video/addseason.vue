@@ -125,7 +125,7 @@ export default {
           () => {
             this.$store.commit("app/loaderStatus", false);
           },
-          'season_add'
+          "season_add"
         );
       }
     }

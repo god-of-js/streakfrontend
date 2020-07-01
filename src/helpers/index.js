@@ -25,7 +25,14 @@ const imgCheck = file => {
     return true;
   }
 };
-const post = async (url, data, vueApp, callback = () => {}, type = null, finish = () => {}) => {
+const post = async (
+  url,
+  data,
+  vueApp,
+  callback = () => {},
+  type = null,
+  finish = () => {}
+) => {
   await vueApp.$axios
     .post(
       vueApp.$store.state.app.apiUrl + url,
@@ -41,15 +48,14 @@ const post = async (url, data, vueApp, callback = () => {}, type = null, finish 
           params: { id: result.data.data.savedSeries._id }
         });
       }
-      if(type === 'season_add') {
-         vueApp.$router.push({
+      if (type === "season_add") {
+        vueApp.$router.push({
           name: "series-view",
           params: { id: result.data.data.seriesId }
         });
       }
 
       finish();
-      
     })
     .catch(err => {
       vueApp.$errorNot(err.response.data.message, vueApp);

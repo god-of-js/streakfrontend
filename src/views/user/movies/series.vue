@@ -18,7 +18,7 @@
           :video="movie.videoUrl"
           :rating="movie.rating"
           :type="'series'"
-          @click="viewSerie(movie._id)"
+          :func="viewSerie"
         />
       </div>
     </div>
@@ -50,6 +50,7 @@
           :name="movie.name"
           :img="movie.img"
           :rating="movie.rating"
+          :func="viewSerie"
         />
       </div>
     </div>
@@ -143,9 +144,12 @@ export default {
     });
   },
   methods: {
-    viewSerie() {
-      this.$router.push({ name: "series-view", params: { id: this.id } });
-    },
+    viewSerie(movie) {
+      this.$router.push({
+        name: "user-view-series",
+        params: { id: movie._id }
+      });
     }
+  }
 };
 </script>

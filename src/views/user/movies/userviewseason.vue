@@ -15,17 +15,18 @@
     </div>
     <div class="md_text text-left ml-3 mb-0 pb-0">Episodes</div>
     <div class="row ml-3 mr-3 ">
-      <adminmovie
+      <usermovie
         v-for="(season, index) in getSeason[0].episodes"
         :key="index"
         :views="50"
         :name="`Episode ${season.episodeNumber}`"
         :img="season.img_url"
+        :video="season.video_url"
         :rating="7"
         :id="season._id"
-        :type="'episodes'"
+        :movie="season"
+        :func="viewEpisodes"
       />
-      <addseries :func="addSeries" />
     </div>
   </div>
 </template>
@@ -48,12 +49,16 @@ export default {
     this.$store.dispatch("movies/getSingleSeries", { id, vueApp });
   },
   methods: {
-    addSeries() {
-      let id = this.$router.history.current.params.seriesid,
-        seasonid = this.$router.history.current.params.seasonid;
+    viewEpisodes(movie) {
+      let seriesId = this.$router.history.current.params.seriesid;
+      let seasonId = this.$router.history.current.params.seasonid;
       this.$router.push({
-        name: "addepisode",
-        params: { seriesid: id, seasonid: seasonid }
+        name: "user-view-episode",
+        params: {
+          seriesid: seriesId,
+          seasonid: seasonId,
+          episodeid: movie.episodeNumber
+        }
       });
     }
   }
