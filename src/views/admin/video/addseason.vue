@@ -88,7 +88,6 @@ export default {
     },
     droppedFile(e, type) {
       const file = e.dataTransfer.files;
-      console.log(file[0]);
       if (type === "video") {
         if (!this.$videoCheck(...file)) {
           this.$errorNot("Wrong format of Video", this);

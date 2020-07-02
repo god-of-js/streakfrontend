@@ -6,7 +6,7 @@
       style="overflow-y: auto;"
     >
       <div
-        class="auth_box col-lg-4 mx-auto col-md-6 col-sm-8 box_shadow pt-4 pb-4 mb-4 mr-2 ml-2"
+        class="auth_box col-lg-4 mx-auto col-md-6 col-sm-10 box_shadow pt-4 pb-4 mb-4 mr-2 ml-2"
       >
         <div class="text-center">
           <bluestreak />

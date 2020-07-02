@@ -40,7 +40,6 @@ const post = async (
       vueApp.$store.state.user.token
     )
     .then(result => {
-      console.log(result);
       vueApp.$successNot(result.data.message, vueApp);
       if (type === "series_add") {
         vueApp.$router.push({

@@ -10,6 +10,7 @@ import adminmovie from "./components/admin/props/movie.vue";
 import addseries from "./components/admin/props/addseries.vue";
 import moviepage from "./components/admin/props/moviepage.vue";
 import usermovie from "./components/user/props/movie.vue";
+import appfoot from "./components/user/props/footer.vue";
 import timelinemovie from "./components/user/props/timelinemovie.vue";
 import {
   errorNot,
@@ -25,6 +26,7 @@ Vue.component("adminmovie", adminmovie);
 Vue.component("moviepage", moviepage);
 Vue.component("addseries", addseries);
 Vue.component("usermovie", usermovie);
+Vue.component("appfoot", appfoot);
 Vue.component("timelinemovie", timelinemovie);
 Vue.config.productionTip = false;
 Vue.component("bluestreak", bluestreak);

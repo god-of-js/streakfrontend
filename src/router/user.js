@@ -12,7 +12,7 @@ export default [
   {
     path: "/userlayout",
     component: userlayout,
-    name: "Admin Layout",
+    name: "User-Layout",
     children: [
       {
         path: "/movie-list",

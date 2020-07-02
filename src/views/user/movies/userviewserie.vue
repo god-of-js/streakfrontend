@@ -4,7 +4,7 @@
       class="movie_cover d-flex  align-items-center p-3 "
       :style="`background-image: url(${serie.imgUrl})`"
     >
-      <img :src="serie.imgUrl" class="ml-3" />
+      <img :src="serie.imgUrl" class="ml-3 serie_img" width="250" />
       <div class="movie_preview_text ml-4 text-left">
         <div class="large_title mb-2">{{ $format(serie.title) }}</div>
         <div class="cast text-left mb-2">{{ $format(serie.cast) }}</div>
@@ -43,7 +43,6 @@ export default {
   },
   methods: {
     viewEpisodes(movie) {
-      console.log(movie);
       let seriesId = this.$router.history.current.params.id;
       this.$router.push({
         name: "user-view-season",

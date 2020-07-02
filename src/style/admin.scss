@@ -40,7 +40,7 @@ $webkit_shadow: 0 2px 2px 0 rgba(8,8,8, 0.14), 0 3px 1px -2px rgba(8,8,8, 0.12),
     overflow-x: auto;
 }
 .no_overflow{
-    overflow-x: none;
+    overflow-x: hidden !important;
 }
 .border_bottom{
     border-bottom: 1px solid $white
@@ -185,6 +185,9 @@ ul{
 .trans_btn:hover{
     color: $dark_grey
 }
+.footer{
+    display: none;
+}
 .movie{
     width: 200px;
     .percent_rated{
@@ -304,7 +307,7 @@ ul{
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
-        background-size: cover;;
+        background-size: cover;
         height: 170px;
         min-width: 200px;
         border-radius: 7px;
@@ -356,7 +359,7 @@ ul{
     font-weight: bold;
 }
 .movie_cover{
-    height: 70vh;
+    min-height: 70vh;
     background-color: $black;
     -webkit-background-size: cover;
     -moz-background-size: cover;

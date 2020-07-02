@@ -1,11 +1,12 @@
 <template>
   <div class="d-flex h_100">
-    <sidebar class="col-2" :arr="paths" />
-    <div class="col-10 admin_body h_100 p-0 overflow">
+    <sidebar class="col-2 sidebar_responsive" :arr="paths" />
+    <div class="col-lg-10 col-sm-12 col-md-12 admin_body h_100 p-0 overflow">
       <navbar />
-      <div class="route_body" style="overflow-x: hidden">
+      <div class="route_body overflow">
         <router-view></router-view>
       </div>
+      <appfoot :routes="paths" />
     </div>
   </div>
 </template>
@@ -35,16 +36,6 @@ export default {
           name: "SERIES",
           path: "/series",
           icon: "/img/series.svg"
-        },
-        {
-          name: "ANIME",
-          path: "/anime",
-          icon: "/img/anime.png"
-        },
-        {
-          name: "SETTINGS",
-          path: "/settings",
-          icon: "/img/settings.png"
         }
       ]
     };

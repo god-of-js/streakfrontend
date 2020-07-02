@@ -1,20 +1,20 @@
 <template>
   <div class="movie_page pt-4 no_overflow" :key="movie.videoUrl">
     <div
-      class="movie_display m-3 mt-0  pl-0 pr-4 p-0 pb-3 no_overflow"
+      class="movie_display m-3 mt-0  pl-0 pr-4 p-0 pb-3 no_overflow sm_pr_0"
       :key="movie.title"
     >
-      <div class="container">
+      <div class="">
         <video controls class="movie_half" :key="movie.videoUrl">
           <source :src="movie.videoUrl" />
         </video>
       </div>
       <div
-        class="d-flex mb-2 pl-4 justify-content-between pr-4"
+        class="d-flex mb-2 pl-4 justify-content-between pr-4 sm_pl_0"
         :key="movie.title"
       >
-        <div class="title_view">{{ $format(movie.title) }}</div>
-        <div class="title_view">
+        <div class="title_view col-9 text-left">{{ $format(movie.title) }}</div>
+        <div class="title_view sm_hide">
           <button class="trans_btn small_icon">
             <i class="mdi mdi-thumb-up"> </i><span class="font_sm"> 900</span>
           </button>

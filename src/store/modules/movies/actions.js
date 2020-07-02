@@ -10,14 +10,12 @@ export default {
       });
   },
   getSeries({ commit }, { vueApp }) {
-    console.log(vueApp);
     vueApp.$axios
       .get(
         vueApp.$store.state.app.apiUrl + "/api/v1/movie/get-series",
         vueApp.$store.state.user.token
       )
       .then(response => {
-        console.log(response.data.series);
         commit("setSeries", response.data.series);
       });
   },
@@ -65,6 +63,6 @@ export default {
         response.data[0].seasons = response.data.seasons;
         commit("setSerie", response.data[0]);
       })
-      .catch(err => console.log(err));
+      .catch(() => {});
   }
 };

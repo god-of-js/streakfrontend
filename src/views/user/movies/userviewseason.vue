@@ -4,7 +4,7 @@
       class="movie_cover d-flex  align-items-center p-3 "
       :style="`background-image: url(${getSeason[0].img_url})`"
     >
-      <img :src="getSeason[0].img_url" class="ml-3" width="300" />
+      <img :src="getSeason[0].img_url" class="ml-3 serie_img" width="250" />
       <div class="movie_preview_text ml-4 text-left">
         <div class=" mb-2 large_title">{{ $format(serie.title) }}</div>
         <div class="sub_heading ml-2" :key="getSeason.length">

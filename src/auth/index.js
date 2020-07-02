@@ -34,7 +34,6 @@ export default {
           vueApp.$router.push("/movie-list");
       })
       .catch(err => {
-        console.log(err.response);
         vueApp.$errorNot(err.response.data.message, vueApp);
         finish();
       })

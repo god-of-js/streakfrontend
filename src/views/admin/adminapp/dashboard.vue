@@ -10,8 +10,6 @@ export default {
     })
   },
   beforeMount() {
-    console.log(this.$store.state.user.token);
-    console.log(this.$store.state.user.user);
   }
 };
 </script>

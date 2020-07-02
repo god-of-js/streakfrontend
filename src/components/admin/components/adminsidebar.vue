@@ -38,7 +38,6 @@ export default {
     };
   },
   beforeMount() {
-    console.log();
   },
   methods: {
     setActiveClass(path) {
